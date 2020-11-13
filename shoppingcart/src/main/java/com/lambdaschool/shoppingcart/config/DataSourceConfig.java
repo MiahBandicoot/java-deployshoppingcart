@@ -3,6 +3,7 @@ package com.lambdaschool.shoppingcart.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,6 +29,14 @@ public class DataSourceConfig {
             String myURLString = "Jdbc:h2:mem:testdb";
             String myDriverClass = "org.h2.Driver";
             String mydbUser = "sa";
+            String mydbPassword = "";
+
+            return DataSourceBuilder.create()
+                    .username(mydbUser)
+                    .password(mydbPassword)
+                    .url(myURLString)
+                    .driverClassName(myDriverClass)
+                    .build();
 
         }
     }
